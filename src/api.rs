@@ -237,7 +237,7 @@ async fn search_phrases(
     let phrase_query = if query.similar_search.unwrap_or(false) {
         format!("\"{}\"", escape_fts5_query(&phrase))
     } else {
-        format!("{}*", escape_fts5_query(&phrase))
+        format!("MATCH {}", escape_fts5_query(&phrase))
     };
 
     let mut conditions = Vec::new();
